@@ -2,8 +2,9 @@ import numpy as np
 
 class percept():
 
-    def __init__(self, inputney, layouts, outputney, countLearn ):
+    def __init__(self, inputney, layouts, outputney, countLearn, id ):
         np.random.seed(1)
+        self.id  = id
         self.syn = []
         self.l   = []
         self.countLearn = countLearn
@@ -39,7 +40,7 @@ class percept():
                     l_error[i] = y - self.l[i]
 
                     if (j% count) == 0 and check:
-                        print("Error"+str(j)+":" + str(np.mean(np.abs(l_error[i]))))
+                        print(str(self.id)+": Error"+str(j)+":" + str(np.mean(np.abs(l_error[i]))))
 
                     l_delta[i] = l_error[i]*self.nonlin(self.l[i],deriv=True)
                 else:
